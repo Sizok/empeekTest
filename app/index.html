@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="css/media-style.css">
 </head>
 <body ng-app="crop">
-<home-page></home-page>
-
+  <ui-view>
+  </ui-view>
 <script src="js/jquery-3.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/angular.js"></script>
@@ -23,5 +23,8 @@
 <script src="js/app/home/home.js"></script>
 <script src="js/app/home/homeComp.js"></script>
 <script src="js/app/services/getImageService.js"></script>
+<script src="js/app/services/canvasService.js"></script>
+<script src="js/app/services/resizeCanvasService.js"></script>
+<script src="js/app/services/editCanvasService.js"></script>
 </body>
 </html>

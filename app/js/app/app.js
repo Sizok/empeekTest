@@ -1,6 +1,9 @@
 angular.module('crop', [
   'ui.router',
   'getImage.Service',
+  'canvas.Service',
+  'resizeCanvas.Service',
+  'editCanvas.Service',
   'crop.home'
   ])
 .config(['$locationProvider', '$urlRouterProvider', '$httpProvider', '$sceDelegateProvider', function ($locationProvider, $urlRouterProvider, $httpProvider, $sceDelegateProvider) {

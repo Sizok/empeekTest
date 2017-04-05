@@ -20,7 +20,7 @@
 <section class="page-body">
     <div class="container">
         <div class="row">
-            <div class="col-xs-3">
+            <div class="col-xs-3" id="leftMenuPanel">
                 <div class="gallery-block">
                     <div class="gallery-header">
                         <span>IMAGES</span>
@@ -32,48 +32,40 @@
                         <span><i class="glyphicon glyphicon-search"></i></span>
                     </div>
                     <ul class="gallery">
-                        <li class="gallery-item gallery-item-active">
-                            <img src="img/1.jpg" alt="">
+                        <li class="gallery-item" ng-repeat="item in $ctrl.img track by $index" ng-click="$ctrl.drawImage($index)" ng-class="{'gallery-item-active': $ctrl.index == $index}">
+                            <img ng-src="{{item.src}}" alt="">
                         </li>
-                        <li class="gallery-item">
-                            <img src="img/1.jpg" alt="">
-                        </li>
-                        <li class="gallery-item"><img src="img/1.jpg" alt=""></li>
-                        <li class="gallery-item"><img src="img/1.jpg" alt=""></li>
-                        <li class="gallery-item"><img src="img/1.jpg" alt=""></li>
-                        <li class="gallery-item"><img src="img/1.jpg" alt=""></li>
                     </ul>
                     <button class="upload-button" type="button">Upload Image</button>
                 </div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-6" id="bodyCanvasService">
                 <div class="canvas-block">
                     <div class="canvas-inner-block">
                         <div class="canvas-header">
                             <span>CANVAS</span>
-                            <span><i class="glyphicon glyphicon-move"></i> REPOSITION</span>
+                            <span ng-click="$ctrl.openEditWindow()"><i class="glyphicon glyphicon-move"></i> REPOSITION</span>
                             <div class="clearfix"></div>
                         </div>
                         <div class="canvas-image">
-                          {{$ctrl.images}}
                             <div class="canvas-container">
-                                <canvas id="upperCanvas"></canvas>
-                                <canvas id="lowerCanvas"></canvas>
+                                <canvas id="fabricCanvas" width="484" height="242" class="canvas-style upperCanvas"></canvas>
+                                <canvas id="secondFabricCanvas" width="484" height="242" class="canvas-style lowerCanvas"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-3">
+            <div class="col-xs-3" id="rightMenuPanel">
                 <div class="right-tools-panel">
                     <div class="tools-panel">
                         <div class="canvas-size-select">
                             <div class="size-select-header">
                                 <span class="size-title">SIZES</span>
                             </div>
-                            <span class="pinterest-size size-item size-item-active"></span>
-                            <span class="instagram-size size-item"></span>
-                            <span class="facebook-size size-item"></span>
+                            <span class="pinterest-size size-item" ng-click="$ctrl.resizeCanvas('lg')" ng-class="{'size-item-active': $ctrl.canvasSize == 'lg'}"></span>
+                            <span class="instagram-size size-item" ng-click="$ctrl.resizeCanvas('md')" ng-class="{'size-item-active': $ctrl.canvasSize == 'md'}"></span>
+                            <span class="facebook-size size-item" ng-click="$ctrl.resizeCanvas('sm')" ng-class="{'size-item-active': $ctrl.canvasSize == 'sm'}"></span>
                         </div>
                         <div class="filters-tool">
                             <div class="filters-title">

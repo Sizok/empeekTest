@@ -325,3 +325,22 @@ nav {
   font-size: 14px; }
   .download-btn-style:hover {
     opacity: .7; }
+
+.canvas-image {
+  clear: both; }
+
+.canvas-container {
+  position: relative; }
+
+.canvas-style {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: default;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  margin: 10px 10px; }

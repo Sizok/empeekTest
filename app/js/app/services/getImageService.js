@@ -3,10 +3,8 @@
         var factory = {};
 
         factory.getImage = function(){
-          return $http.get('js/app/imageBase.json').then(function(data){
-              console.log(data.data);
-              debugger;
-              return data.data;
+          return $http.get('js/app/imageBase.json').then(function(result){
+              return result.data;
             });
         };
 

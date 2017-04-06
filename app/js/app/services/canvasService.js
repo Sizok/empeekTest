@@ -22,7 +22,7 @@
             position.x = -imageSize.width / 3;
           }
           if(canvas.height < canvas.width){
-            imageSize.height = imageSize.width * 0.8;
+            imageSize.height = imageSize.width * 0.6;
             position.y = -(imageSize.height - canvas.height) / 2;
           }
 

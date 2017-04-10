@@ -3,9 +3,7 @@
         var factory = {};
 
           factory.resizeCanvasWindow = function (imgSrc){
-            debugger;
-            var canvasObj = document.getElementById('fabricCanvas');
-            var canvasSecondObj = document.getElementById('secondFabricCanvas');
+            canvasService.canvas
             var oldValue = {};
             var drawCoube = true;
             oldValue.width = canvasObj.width;

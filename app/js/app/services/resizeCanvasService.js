@@ -1,35 +1,29 @@
 (function () {
-    function resizeCanvasService() {
+    function resizeCanvasService(canvasService) {
         var factory = {};
 
         factory.resizeCanvas = function(size){
-          debugger;
-          var canvasSize = {};
-          var canvasObj = document.getElementById('fabricCanvas');
-          var canvasSecondObj = document.getElementById('secondFabricCanvas');
-
-          canvasSize.width = 484;
-          if (size === 'sm'){
-            canvasSize.height = 242;
-          }
-          if (size === 'md'){
-            canvasSize.height = 484;
-          }
-          if (size === 'lg'){
-            canvasSize.height = 725;
-          }
-          $('.canvas-container').css('width:', canvasSize.width);
-          $('.canvas-container').css('width:', canvasSize.heigth);
-          canvasObj.width = canvasSize.width;
-          canvasObj.height = canvasSize.height;
-          canvasSecondObj.width = canvasSize.width;
-          canvasSecondObj.height = canvasSize.height;
+          var canvas = canvasService.canvas;
+            var canvasSize = {};
+            canvasSize.width = 484;
+            if (size === 'sm'){
+              canvasSize.height = 242;
+            }
+            if (size === 'md'){
+              canvasSize.height = 484;
+            }
+            if (size === 'lg'){
+              canvasSize.height = 725;
+            }
+            $('.canvas-container').css('width:', canvasSize.width);
+            $('.canvas-container').css('height:', canvasSize.heigth);
+            canvas.setDimensions({ width: canvasSize.width, height: canvasSize.height });
+            canvas.calcOffset();
         }
-
 
         return factory;
     }
 
-    resizeCanvasService.$inject = [];
+    resizeCanvasService.$inject = ['canvasService'];
     angular.module('resizeCanvas.Service', []).factory('resizeCanvasService', resizeCanvasService);
 })();

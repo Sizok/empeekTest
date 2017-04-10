@@ -11,6 +11,8 @@
         //load img base
         ctrl.$onInit = function() {
       	   ctrl.img = ctrl.images;
+           ctrl.canvasService.creatCanvas();
+           ctrl.resizeCanvasService.resizeCanvas(ctrl.canvasSize);
            ctrl.canvasService.drawImage(ctrl.img[0]);
           };
 

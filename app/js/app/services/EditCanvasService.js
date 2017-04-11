@@ -5,7 +5,6 @@
           factory.resizeCanvasWindow = function (imgSrc){
             var canvas = canvasService.canvas;
             var oldValue = {};
-            debugger;
 
             oldValue.width = canvas.width;
             oldValue.height = canvas.height;
@@ -22,7 +21,7 @@
             $('.canvas-container').css('width', '1024');
             $('.canvas-container').css('height', '750');
 
-            canvasService.drawImage(imgSrc);
+            canvasService.drawImage(imgSrc, true, oldValue);
           }
 
         return factory;

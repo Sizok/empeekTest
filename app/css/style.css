@@ -338,8 +338,8 @@ nav {
           border-radius: 3px; }
 
 .controll-panel {
-  display: table;
-  margin: 20px auto -73px;
+  display: block;
+  margin: 0 auto;
   z-index: 1000;
   background-color: #242A30;
   height: 52px;

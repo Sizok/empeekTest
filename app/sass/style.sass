@@ -309,3 +309,41 @@ nav
   margin: 10px auto
 .canvas-style
   border-radius: 3px
+
+.controll-panel
+  display: table
+  margin: 20px auto -73px
+  z-index: 1000
+  background-color: #242A30
+  height: 52px
+  line-height: 52px
+  border-radius: 2px
+  position: absolute
+  padding: 0 10px
+  &:after
+    content: ''
+    position: absolute
+    border-style: solid
+    border-width: 10px 10px 0
+    border-color: #242A30 transparent
+    display: block
+    width: 0
+    z-index: 1
+    bottom: -10px
+    left: 47%
+  span
+    color: #A4A4A4
+    font-size: 16px
+    display: inline-block
+  .input-range
+    display: inline-block
+    margin: 0 10px
+    input
+      &:focus
+        outline: none
+  button
+    margin-top: -5px
+    background-color: #2C7BB5
+    color: #fff
+    &:hover
+      opacity: 0.8

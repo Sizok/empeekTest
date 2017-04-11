@@ -8,6 +8,8 @@
         ctrl.canvasSize = 'sm';
         ctrl.img =[];
         ctrl.index = 0;
+        ctrl.conrollPanel = false;
+
         //load img base
         ctrl.$onInit = function() {
       	   ctrl.img = ctrl.images;

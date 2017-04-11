@@ -45,7 +45,6 @@
           imageObj.lockMovementY = true;
           imageObj.evented = false;
           imageObj.hasControls = false;
-          debugger;
           if(editCanvas == true){
 
             if(vulueCanvas.height < factory.oldValueImage.height){
@@ -63,7 +62,6 @@
             imageObj.height = factory.oldValueImage.height;
             imageObj.width = factory.oldValueImage.width;
           }else {
-            debugger;
             if(canvas.width > canvas.height){
               imageObj.height = canvas.width / 1.2;
               imageObj.width = canvas.width;

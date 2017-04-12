@@ -11,25 +11,27 @@
         factory.rect = false;
         factory.imagePosition = {};
         factory.imageCenter = true;
+        factory.imgSrc;
+        factory.filters = [];
         factory.creatCanvas = function(){
           factory.canvas = new fabric.Canvas('fabricCanvas',{preserveObjectStacking: true});
           factory.context = factory.canvas.getContext('2d');
-          factory.filter = new fabric.Image.filters.Convolute({
-  matrix: [ 1/9, 1/9, 1/9,
-            1/9, 1/9, 1/9,
-            1/9, 1/9, 1/9 ]
-});
+          factory.filters[0] = new fabric.Image.filters.BaseFilter();
+          factory.filters[1] = new fabric.Image.filters.Multiply({
+            color: '#7f7f7f'
+          });
+          factory.filters[2] = new fabric.Image.filters.Tint({color: 'rgba(183, 182, 170, 0.3)'});
         };
 
         factory.drawImage = function (imgSrc) {
           var imageSize = {};
-          // if(factory.rect){
-          //   editCanvas = factory.rect;
-          // }
+
+          factory.imgSrc = imgSrc;
           var vulueCanvas = factory.sizeRect;
           var canvas = factory.canvas;
           var context = factory.context;
           var rect;
+          canvas.selection = false;
           if (factory.rect === true){
             rect = new fabric.Rect();
           }
@@ -60,8 +62,9 @@
           imageObj.lockMovementY = true;
           imageObj.evented = false;
           imageObj.hasControls = false;
-          imageObj.filters.push(factory.filter);
-          imageObj.applyFilters(canvas.renderAll.bind(factory.filter));
+
+          imageObj.filters.push(factory.filters[2]);
+          imageObj.applyFilters(canvas.renderAll.bind(canvas));
           if(factory.imageCenter === false){
             imageObj.left = factory.imagePosition.left;
             imageObj.top = factory.imagePosition.top;
@@ -124,7 +127,6 @@
             elem.css('top', coorditates.top);
             elem.css('left', coorditates.left);
           }
-          canvas.renderAll();
         });
 
         };

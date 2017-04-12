@@ -26,9 +26,7 @@
           };
 
         ctrl.drawImage = function(index){
-          if(index){
             ctrl.index = index;
-          }
           ctrl.canvasService.drawImage(ctrl.img[ctrl.index]);
         };
       ctrl.doneEditWindow = function(){

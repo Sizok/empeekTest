@@ -1,5 +1,6 @@
 angular.module('crop', [
   'ui.router',
+  'ui.bootstrap',
   'getImage.Service',
   'canvas.Service',
   'resizeCanvas.Service',

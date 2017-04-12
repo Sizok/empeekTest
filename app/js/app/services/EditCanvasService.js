@@ -10,8 +10,8 @@
             oldValue.height = canvas.height;
             canvas.setDimensions({ width: 1024, height: 750 });
             canvas.calcOffset();
-            // canvas.width = 1024;
-            // canvas.height = 750;
+            canvasService.sizeRect = oldValue;
+            canvasService.rect = true;
 
             $('#leftMenuPanel').css('display', 'none');
             $('#rightMenuPanel').css('display', 'none');
@@ -21,7 +21,25 @@
             $('.canvas-container').css('width', '1024');
             $('.canvas-container').css('height', '750');
 
-            canvasService.drawImage(imgSrc, true, oldValue);
+            canvasService.drawImage(imgSrc);
+          }
+          factory.doneResizeCanvasWindow = function (imgSrc){
+            var canvas = canvasService.canvas;
+            var oldValue = {};
+
+            canvas.setDimensions({ width: canvasService.sizeRect.width, height: canvasService.sizeRect.height });
+            canvas.calcOffset();
+            canvasService.rect = false;
+
+            $('#leftMenuPanel').css('display', 'block');
+            $('#rightMenuPanel').css('display', 'block');
+            $('.canvas-header').css('display', 'block');
+            $('#bodyCanvasService').removeClass('col-xs-12');
+            $('#bodyCanvasService').addClass('col-xs-6');
+            $('.canvas-container').css('width', canvasService.sizeRect.width);
+            $('.canvas-container').css('height', canvasService.sizeRect.height);
+
+            canvasService.drawImage(imgSrc);
           }
 
         return factory;

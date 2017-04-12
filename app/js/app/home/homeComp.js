@@ -20,21 +20,27 @@
 
 
         ctrl.resizeCanvas = function(size) {
-          var index = ctrl.index;
           ctrl.canvasSize = size;
           ctrl.resizeCanvasService.resizeCanvas(ctrl.canvasSize);
-          ctrl.canvasService.drawImage(ctrl.img[index]);
+          ctrl.canvasService.drawImage(ctrl.img[ctrl.index]);
           };
 
         ctrl.drawImage = function(index){
-          ctrl.index = index;
-          ctrl.canvasService.drawImage(ctrl.img[index]);
+          if(index){
+            ctrl.index = index;
+          }
+          ctrl.canvasService.drawImage(ctrl.img[ctrl.index]);
         };
+      ctrl.doneEditWindow = function(){
+        ctrl.rootScope.controllPanel = false;
+        ctrl.canvasService.imageCenter = false;
+        ctrl.editCanvasService.doneResizeCanvasWindow(ctrl.img[ctrl.index]);
+      }
 
       ctrl.openEditWindow = function(){
-        var index = ctrl.index;
+        ctrl.canvasService.imageCenter = true;
         ctrl.rootScope.controllPanel = true;
-        ctrl.editCanvasService.resizeCanvasWindow(ctrl.img[index]);
+        ctrl.editCanvasService.resizeCanvasWindow(ctrl.img[ctrl.index]);
       }
 
     }

@@ -205,6 +205,7 @@ nav
       padding: 10px
       border-radius: 5px
       margin: 0 5% 15px 0
+      position: relative
       .filters-title
         width: 100%
         span
@@ -235,6 +236,21 @@ nav
             display: block
             margin-left: 10px
             color: #59626a
+      .filters-select-list
+        position: absolute
+        z-index: 25
+        background-color: #fff
+        max-height: 200px
+        overflow-y: scroll
+        border: 1px solid #DEDEDE
+        box-shadow: 0px 10px 39px -12px rgba(0,0,0,0.75)
+        min-width: 100%
+        left: 0
+        display: none
+        .filter-item
+          padding: 10px 10px
+          &:hover
+            background-color: rgba(51, 51, 51, .1)
     .select-text-block
       width: 95%
       min-height: 110px
@@ -348,3 +364,23 @@ nav
     color: #fff
     &:hover
       opacity: 0.8
+.image-filter-none
+  background-image: url("../img/filters/filters-example-none.jpg") !important
+.image-filter-heavy-contr
+  background-image: url("../img/filters/filters-example-heavy-contrast.jpg") !important
+.image-filter-light-blur
+  background-image: url("../img/filters/filters-example-light-blur.jpg") !important
+.image-filter-heavy-blur
+  background-image: url("../img/filters/filters-example-heavy-blur.jpg") !important
+.image-filter-grayscale
+  background-image: url("../img/filters/filters-example-grayscale.jpg") !important
+.image-filter-blur-grayscale
+  background-image: url("../img/filters/filters-example-blur-grayscale.jpg") !important
+.image-filter-red-tint
+  background-image: url("../img/filters/filters-example-red-tint.jpg") !important
+.image-filter-green-tint
+  background-image: url("../img/filters/filters-example-green-tint.jpg") !important
+.image-filter-blue-tint
+  background-image: url("../img/filters/filters-example-blue-tint.jpg") !important
+.display-block
+  display: block !important

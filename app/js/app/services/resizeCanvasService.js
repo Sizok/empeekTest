@@ -15,6 +15,7 @@
             if (size === 'lg'){
               canvasSize.height = 725;
             }
+            canvasService.imageCenter = true;
             $('.canvas-container').css('width:', canvasSize.width);
             $('.canvas-container').css('height:', canvasSize.heigth);
             canvas.setDimensions({ width: canvasSize.width, height: canvasSize.height });

@@ -72,15 +72,123 @@
                         <div class="filters-tool">
                             <div class="filters-title">
                                 <span>FILTERS</span>
-                                <span><i class="glyphicon glyphicon-repeat"></i>RESET</span>
+                                <span ng-click="$ctrl.addFilter('lightContrast')"><i class="glyphicon glyphicon-repeat"></i>RESET</span>
                                 <div class="clearfix"></div>
                             </div>
-                            <div class="filters-select">
-                                <div class="filter-item">
-                                    <div class="image-filter"></div>
-                                    <span>Light contrast</span>
-                                    <span><i class="glyphicon glyphicon-chevron-down"></i></span>
-                                    <div class="clearfix"></div>
+                            <div class="filters-select" hide-show-menu>
+                                <div>
+                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'none'">
+                                      <div class="image-filter image-filter-none"></div>
+                                      <span>None</span>
+                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'lightContrast'">
+                                      <div class="image-filter"></div>
+                                      <span>Light Contrast</span>
+                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'heavyContrast'">
+                                      <div class="image-filter image-filter-heavy-contr"></div>
+                                      <span>Heavy Contrast</span>
+                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'lightBlur'">
+                                      <div class="image-filter image-filter-light-blur"></div>
+                                      <span>Light Blur</span>
+                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'heavyBlur'">
+                                      <div class="image-filter image-filter-heavy-blur"></div>
+                                      <span>Heavy Blur</span>
+                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'grayscale'">
+                                      <div class="image-filter image-filter-grayscale"></div>
+                                      <span>Grayscale</span>
+                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'grayscaleBlur'">
+                                      <div class="image-filter image-filter-blur-grayscale"></div>
+                                      <span>Blur Grayscale</span>
+                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'redTint'">
+                                      <div class="image-filter image-filter-red-tint"></div>
+                                      <span>Red Tint</span>
+                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'greenTint'">
+                                      <div class="image-filter image-filter-green-tint"></div>
+                                      <span>Green Tint</span>
+                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'blueTint'">
+                                      <div class="image-filter image-filter-blue-tint"></div>
+                                      <span>Blue Tint</span>
+                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                </div>
+                                <div class="filters-select-list">
+                                  <div class="filter-item" ng-click="$ctrl.addFilter('none')">
+                                      <div class="image-filter image-filter-none"></div>
+                                      <span>None</span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-click="$ctrl.addFilter('lightContrast')">
+                                      <div class="image-filter"></div>
+                                      <span>Light Contrast</span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-click="$ctrl.addFilter('heavyContrast')">
+                                      <div class="image-filter image-filter-heavy-contr"></div>
+                                      <span>Heavy Contrast</span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-click="$ctrl.addFilter('lightBlur')">
+                                      <div class="image-filter image-filter-light-blur"></div>
+                                      <span>Light Blur</span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-click="$ctrl.addFilter('heavyBlur')">
+                                      <div class="image-filter image-filter-heavy-blur"></div>
+                                      <span>Heavy Blur</span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-click="$ctrl.addFilter('grayscale')">
+                                      <div class="image-filter image-filter-grayscale"></div>
+                                      <span>Grayscale</span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-click="$ctrl.addFilter('grayscaleBlur')">
+                                      <div class="image-filter image-filter-blur-grayscale"></div>
+                                      <span>Blur Grayscale</span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-click="$ctrl.addFilter('redTint')">
+                                      <div class="image-filter image-filter-red-tint"></div>
+                                      <span>Red Tint</span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-click="$ctrl.addFilter('greenTint')">
+                                      <div class="image-filter image-filter-green-tint"></div>
+                                      <span>Green Tint</span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="filter-item" ng-click="$ctrl.addFilter('blueTint')">
+                                      <div class="image-filter image-filter-blue-tint"></div>
+                                      <span>Blue Tint</span>
+                                      <div class="clearfix"></div>
+                                  </div>
                                 </div>
                             </div>
                         </div>

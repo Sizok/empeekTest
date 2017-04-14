@@ -41,6 +41,10 @@
         ctrl.editCanvasService.resizeCanvasWindow(ctrl.img[ctrl.index]);
       }
 
+      ctrl.addFilter = function(filterName){
+        ctrl.canvasService.filter = filterName;
+        ctrl.canvasService.drawImage(ctrl.img[ctrl.index]);
+      }
     }
 
     cropCtrl.$inject = ['getImageService', 'canvasService', 'resizeCanvasService', 'editCanvasService', '$rootScope'];

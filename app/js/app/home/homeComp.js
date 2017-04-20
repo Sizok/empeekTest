@@ -24,27 +24,29 @@
           ctrl.resizeCanvasService.resizeCanvas(ctrl.canvasSize);
           ctrl.canvasService.drawImage(ctrl.img[ctrl.index]);
           };
-
-        ctrl.drawImage = function(index){
+        ctrl.changeDrawImage = function (index) {
             ctrl.index = index;
+            ctrl.canvasService.imageCenter = true;
+            ctrl.canvasService.drawImage(ctrl.img[ctrl.index]);
+        };
+        ctrl.drawImage = function(index){
+          ctrl.index = index;
           ctrl.canvasService.drawImage(ctrl.img[ctrl.index]);
         };
       ctrl.doneEditWindow = function(){
         ctrl.rootScope.controllPanel = false;
-        ctrl.canvasService.imageCenter = false;
         ctrl.editCanvasService.doneResizeCanvasWindow(ctrl.img[ctrl.index]);
-      }
+      };
 
       ctrl.openEditWindow = function(){
-        ctrl.canvasService.imageCenter = true;
         ctrl.rootScope.controllPanel = true;
         ctrl.editCanvasService.resizeCanvasWindow(ctrl.img[ctrl.index]);
-      }
+      };
 
       ctrl.addFilter = function(filterName){
         ctrl.canvasService.filter = filterName;
         ctrl.canvasService.drawImage(ctrl.img[ctrl.index]);
-      }
+      };
       ctrl.addText = function(text){
         switch (text) {
           case 'title':
@@ -71,7 +73,7 @@
 
         }
         ctrl.canvasService.drawImage(ctrl.img[ctrl.index]);
-      }
+      };
     }
 
     cropCtrl.$inject = ['getImageService', 'canvasService', 'resizeCanvasService', 'editCanvasService', '$rootScope'];

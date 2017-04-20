@@ -32,7 +32,7 @@
                         <span><i class="glyphicon glyphicon-search"></i></span>
                     </div>
                     <ul class="gallery">
-                        <li class="gallery-item" ng-repeat="item in $ctrl.img track by $index" ng-click="$ctrl.drawImage($index)" ng-class="{'gallery-item-active': $ctrl.index == $index}">
+                        <li class="gallery-item" ng-repeat="item in $ctrl.img track by $index" ng-click="$ctrl.changeDrawImage($index)" ng-class="{'gallery-item-active': $ctrl.index == $index}">
                             <img ng-src="{{item.src}}" alt="">
                         </li>
                     </ul>
@@ -52,6 +52,26 @@
                               <span>Zoom</span>
                               <div class="input-range"><input type="range" ng-model="$ctrl.canvasService.zoomValue.value" ng-change="$ctrl.canvasService.drawImage($ctrl.img[$ctrl.index])" value="1" min="{{$ctrl.canvasService.zoomValue.minValue}}" max="{{$ctrl.canvasService.zoomValue.maxValue}}" step="0.01"></div>
                               <button type="button" name="done" class="btn" ng-click="$ctrl.doneEditWindow()">Done</button>
+                            </div>
+                            <div class="controll-panel font-controll-panel">
+                                <div class="font-select-block">
+                                    <span>Roboto</span>
+                                </div>
+                                <div class="font-style-btn">
+                                    <img src="/img/icon-for-panel/inactive-B.png">
+                                </div>
+                                <div class="font-style-btn">
+                                    <img src="/img/icon-for-panel/inactive-i.png">
+                                </div>
+                                <div class="font-style-btn">
+                                    <img src="/img/icon-for-panel/small-font-size.png">
+                                </div>
+                                <div class="font-style-btn">
+                                    <img src="/img/icon-for-panel/left-align.png">
+                                </div>
+                                <div class="font-style-btn">
+                                    <div class="color-picker"></div>
+                                </div>
                             </div>
                             <canvas id="fabricCanvas"  class="canvas-style"></canvas>
                         </div>

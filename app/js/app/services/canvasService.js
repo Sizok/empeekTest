@@ -70,12 +70,14 @@
           var rect;
           var titleText;
           var titleTextRect;
+          var fontPanelCoordinates = {};
           canvas.selection = false;
           if (factory.rect === true){
             rect = new fabric.Rect();
           }
           if (factory.addText.title === 'title'){
             titleText = new fabric.Textbox('Click twice here to edit text', {
+              name: 'title',
               width: 300,
               left: 0,
               top: 0,
@@ -104,13 +106,29 @@
            br: false,
            tl: false,
            tr: false,
-           mtr: false,
+           mtr: false
           });
           }
 
 
+            canvas.on ("object:selected", function (object) {
+                var panel = $('.font-controll-panel');
+                panel.css('display', 'block');
+                var fontPanel = $('.font-controll-panel');
+                fontPanelCoordinates.top = titleText.top - fontPanel[0].clientHeight - 20;
+                fontPanelCoordinates.left = titleText.left + (fontPanel[0].clientWidth / 4);
+                fontPanel.css('top', fontPanelCoordinates.top);
+                fontPanel.css('left', fontPanelCoordinates.left);
+            });
+            canvas.on ("selection:cleared", function (object) {
+                var panel = $('.font-controll-panel');
+                panel.css('display', 'none');
+            });
+
+
 
           canvas.on ("object:moving", function (event) {
+            factory.imageCenter = false;
             var el = event.target;
             var img = canvas._objects[0];
             var rect = canvas._objects[1];
@@ -126,6 +144,13 @@
             if(rect){
             factory.imagePosition.top = -(rect.top - img.top);
             factory.imagePosition.left = -(rect.left - img.left);
+            }
+            if(titleText){
+                var fontPanel = $('.font-controll-panel');
+                fontPanelCoordinates.top = titleText.top - fontPanel[0].clientHeight - 20;
+                fontPanelCoordinates.left = titleText.left + (fontPanel[0].clientWidth / 4);
+                fontPanel.css('top', fontPanelCoordinates.top);
+                fontPanel.css('left', fontPanelCoordinates.left);
             }
           });
 
@@ -239,6 +264,7 @@
           if(titleText){
           canvas.add(titleText);
           }
+
         });
 
         };

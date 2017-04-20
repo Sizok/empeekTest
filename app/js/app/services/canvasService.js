@@ -14,7 +14,11 @@
         factory.imgSrc;
         factory.filters = [];
         factory.filter = 'lightContrast';
-        factory.addText = {};
+        factory.addText = {
+          title: 'title',
+          body: null,
+          caption: null
+        };
 
         factory.creatCanvas = function(){
           factory.canvas = new fabric.Canvas('fabricCanvas',{preserveObjectStacking: true});
@@ -70,9 +74,9 @@
           if (factory.rect === true){
             rect = new fabric.Rect();
           }
-          factory.addText.title = true;
-          if (factory.addText.title === true){
-            titleText = new fabric.IText('Click twice here to edit text', {
+          if (factory.addText.title === 'title'){
+            titleText = new fabric.Textbox('Click twice here to edit text', {
+              width: 300,
               left: 0,
               top: 0,
               fill: 'white',
@@ -85,8 +89,23 @@
               lockScalingY: true,
               padding: 10,
               transparentCorners: false,
-              lockSkewingX: true
+              lockSkewingX: true,
+              cornerSize: 10,
+              lockRotation: true
               });
+          }
+          if(titleText){
+          titleText.setControlsVisibility({
+            mt: false,
+           mb: false,
+           ml: true,
+           mr: true,
+           bl: false,
+           br: false,
+           tl: false,
+           tr: false,
+           mtr: false,
+          });
           }
 
 

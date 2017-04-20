@@ -196,17 +196,17 @@
                             <div class="select-text-title">
                                 <span>TEXT</span>
                             </div>
-                            <div class="select-text-out-block">
+                            <div class="select-text-out-block" >
                                 <div class="select-text-inner-block">
-                                    <div class="select-text text-title select-text-active"></div>
+                                    <div class="select-text text-title" ng-click="$ctrl.addText('title')" ng-class="{'select-text-active': $ctrl.canvasService.addText.title === 'title'}"></div>
                                     <span>Header</span>
                                 </div>
                                 <div class="select-text-inner-block">
-                                    <div class="select-text text-body"></div>
+                                    <div class="select-text text-body" ng-click="$ctrl.addText('body')"></div>
                                     <span>Body</span>
                                 </div>
                                 <div class="select-text-inner-block">
-                                    <div class="select-text text-bottom"></div>
+                                    <div class="select-text text-bottom" ng-click="$ctrl.addText('caption')"></div>
                                     <span>Caption</span>
                                 </div>
                                 <div class="clearfix"></div>

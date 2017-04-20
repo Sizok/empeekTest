@@ -45,6 +45,33 @@
         ctrl.canvasService.filter = filterName;
         ctrl.canvasService.drawImage(ctrl.img[ctrl.index]);
       }
+      ctrl.addText = function(text){
+        switch (text) {
+          case 'title':
+            if(ctrl.canvasService.addText.title === 'title'){
+              ctrl.canvasService.addText.title = null
+            }else{
+              ctrl.canvasService.addText.title = 'title';
+            }
+          break;
+          case 'body':
+            if(ctrl.canvasService.addText.body === 'body'){
+              ctrl.canvasService.addText.body = null
+            }else{
+              ctrl.canvasService.addText.body = 'body';
+            }
+          break;
+          case 'caption':
+            if(ctrl.canvasService.addText.caption === 'caption'){
+              ctrl.canvasService.addText.caption = null
+            }else{
+              ctrl.canvasService.addText.caption = 'caption';
+            }
+          break;
+
+        }
+        ctrl.canvasService.drawImage(ctrl.img[ctrl.index]);
+      }
     }
 
     cropCtrl.$inject = ['getImageService', 'canvasService', 'resizeCanvasService', 'editCanvasService', '$rootScope'];

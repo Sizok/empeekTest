@@ -1,88 +1,41 @@
 (function () {
-    function cropCtrl(getImageService, canvasService, resizeCanvasService, editCanvasService, $rootScope) {
+    function cropCtrl(addNewService) {
         var ctrl = this;
-        ctrl.getImageService = getImageService;
-        ctrl.canvasService = canvasService;
-        ctrl.resizeCanvasService = resizeCanvasService;
-        ctrl.editCanvasService = editCanvasService;
-        ctrl.canvasSize = 'sm';
-        ctrl.img =[];
-        ctrl.index = 0;
-        ctrl.rootScope = $rootScope;
-        ctrl.rootScope.controllPanel = false;
-        //load img base
+        ctrl.addNewService = addNewService;
+        ctrl.news = [];
+
         ctrl.$onInit = function() {
-      	   ctrl.img = ctrl.images;
-           ctrl.canvasService.creatCanvas();
-           ctrl.resizeCanvasService.resizeCanvas(ctrl.canvasSize);
-           ctrl.canvasService.drawImage(ctrl.img[0]);
+      	   ctrl.news = ctrl.newsItem;
           };
 
-
-        ctrl.resizeCanvas = function(size) {
-          ctrl.canvasSize = size;
-          ctrl.resizeCanvasService.resizeCanvas(ctrl.canvasSize);
-          ctrl.canvasService.drawImage(ctrl.img[ctrl.index]);
-          };
-        ctrl.changeDrawImage = function (index) {
-            ctrl.index = index;
-            ctrl.canvasService.imageCenter = true;
-            ctrl.canvasService.drawImage(ctrl.img[ctrl.index]);
-        };
-        ctrl.drawImage = function(index){
-          ctrl.index = index;
-          ctrl.canvasService.drawImage(ctrl.img[ctrl.index]);
-        };
-      ctrl.doneEditWindow = function(){
-        ctrl.rootScope.controllPanel = false;
-        ctrl.editCanvasService.doneResizeCanvasWindow(ctrl.img[ctrl.index]);
-      };
-
-      ctrl.openEditWindow = function(){
-        ctrl.rootScope.controllPanel = true;
-        ctrl.editCanvasService.resizeCanvasWindow(ctrl.img[ctrl.index]);
-      };
-
-      ctrl.addFilter = function(filterName){
-        ctrl.canvasService.filter = filterName;
-        ctrl.canvasService.drawImage(ctrl.img[ctrl.index]);
-      };
-      ctrl.addText = function(text){
-        switch (text) {
-          case 'title':
-            if(ctrl.canvasService.addText.title === 'title'){
-              ctrl.canvasService.addText.title = null
-            }else{
-              ctrl.canvasService.addText.title = 'title';
-            }
-          break;
-          case 'body':
-            if(ctrl.canvasService.addText.body === 'body'){
-              ctrl.canvasService.addText.body = null
-            }else{
-              ctrl.canvasService.addText.body = 'body';
-            }
-          break;
-          case 'caption':
-            if(ctrl.canvasService.addText.caption === 'caption'){
-              ctrl.canvasService.addText.caption = null
-            }else{
-              ctrl.canvasService.addText.caption = 'caption';
-            }
-          break;
-
+        ctrl.deleteNew = function (index){
+          ctrl.news.splice(index, 1)
+          ctrl.addNewService.addNew(ctrl.news);
         }
-        ctrl.canvasService.drawImage(ctrl.img[ctrl.index]);
-      };
+        ctrl.addNew = function(newItem){
+          var post = {
+              text: newItem,
+              comments: []
+          }
+          newItem.comments = [];
+          ctrl.news.push(post)
+          ctrl.addNewService.addNew(ctrl.news);
+        }
+        ctrl.addComment = function(){
+          debugger;
+          ctrl.news[0].comments.push(ctrl.messegeItem);
+          ctrl.addNewService.addNew(ctrl.news);
+          ctrl.messegeItem = "";
+        }
     }
 
-    cropCtrl.$inject = ['getImageService', 'canvasService', 'resizeCanvasService', 'editCanvasService', '$rootScope'];
+    cropCtrl.$inject = ['addNewService'];
 
-    angular.module('crop')
+    angular.module('empeek')
         .component('homePage', {
             templateUrl: 'js/app/home/homePage.html',
             bindings: {
-               images: '<'
+               newsItem: '<'
            },
             controller: cropCtrl
         });

@@ -1,247 +1,41 @@
-<header>
-    <nav>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-3">
-                    <div class="logo-block">
-                        <div class="logo"></div>
-                    </div>
-                </div>
-                <div class="col-xs-6">
-                    <div class="templates-block"></div>
-                </div>
-                <div class="col-xs-3">
-                    <div class="right-nav-btn-block"></div>
-                </div>
-            </div>
-        </div>
-    </nav>
-</header>
-<section class="page-body">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-3" id="leftMenuPanel">
-                <div class="gallery-block">
-                    <div class="gallery-header">
-                        <span>IMAGES</span>
-                        <span><i class="glyphicon glyphicon-random"></i>SHUFFLE</span>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="gallery-search-input">
-                        <input type="text" class="search-input" placeholder="Search 600k+ images">
-                        <span><i class="glyphicon glyphicon-search"></i></span>
-                    </div>
-                    <ul class="gallery">
-                        <li class="gallery-item" ng-repeat="item in $ctrl.img track by $index" ng-click="$ctrl.changeDrawImage($index)" ng-class="{'gallery-item-active': $ctrl.index == $index}">
-                            <img ng-src="{{item.src}}" alt="">
-                        </li>
-                    </ul>
-                    <button class="upload-button" type="button">Upload Image</button>
-                </div>
-            </div>
-            <div class="col-xs-6" id="bodyCanvasService">
-                <div class="canvas-block">
-                    <div class="canvas-inner-block">
-                        <div class="canvas-header">
-                            <span>CANVAS</span>
-                            <span ng-click="$ctrl.openEditWindow()"><i class="glyphicon glyphicon-move"></i> REPOSITION</span>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="canvas-image">
-                            <div class="controll-panel" ng-if="$ctrl.rootScope.controllPanel">
-                              <span>Zoom</span>
-                              <div class="input-range"><input type="range" ng-model="$ctrl.canvasService.zoomValue.value" ng-change="$ctrl.canvasService.drawImage($ctrl.img[$ctrl.index])" value="1" min="{{$ctrl.canvasService.zoomValue.minValue}}" max="{{$ctrl.canvasService.zoomValue.maxValue}}" step="0.01"></div>
-                              <button type="button" name="done" class="btn" ng-click="$ctrl.doneEditWindow()">Done</button>
-                            </div>
-                            <div class="controll-panel font-controll-panel">
-                                <div class="font-select-block">
-                                    <span>Roboto</span>
-                                </div>
-                                <div class="font-style-btn">
-                                    <img src="/img/icon-for-panel/inactive-B.png">
-                                </div>
-                                <div class="font-style-btn">
-                                    <img src="/img/icon-for-panel/inactive-i.png">
-                                </div>
-                                <div class="font-style-btn">
-                                    <img src="/img/icon-for-panel/small-font-size.png">
-                                </div>
-                                <div class="font-style-btn">
-                                    <img src="/img/icon-for-panel/left-align.png">
-                                </div>
-                                <div class="font-style-btn">
-                                    <div class="color-picker"></div>
-                                </div>
-                            </div>
-                            <canvas id="fabricCanvas"  class="canvas-style"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-3" id="rightMenuPanel">
-                <div class="right-tools-panel">
-                    <div class="tools-panel">
-                        <div class="canvas-size-select">
-                            <div class="size-select-header">
-                                <span class="size-title">SIZES</span>
-                            </div>
-                            <span class="pinterest-size size-item" ng-click="$ctrl.resizeCanvas('lg')" ng-class="{'size-item-active': $ctrl.canvasSize == 'lg'}"></span>
-                            <span class="instagram-size size-item" ng-click="$ctrl.resizeCanvas('md')" ng-class="{'size-item-active': $ctrl.canvasSize == 'md'}"></span>
-                            <span class="facebook-size size-item" ng-click="$ctrl.resizeCanvas('sm')" ng-class="{'size-item-active': $ctrl.canvasSize == 'sm'}"></span>
-                        </div>
-                        <div class="filters-tool">
-                            <div class="filters-title">
-                                <span>FILTERS</span>
-                                <span ng-click="$ctrl.addFilter('lightContrast')"><i class="glyphicon glyphicon-repeat"></i>RESET</span>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="filters-select" hide-show-menu>
-                                <div>
-                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'none'">
-                                      <div class="image-filter image-filter-none"></div>
-                                      <span>None</span>
-                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'lightContrast'">
-                                      <div class="image-filter"></div>
-                                      <span>Light Contrast</span>
-                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'heavyContrast'">
-                                      <div class="image-filter image-filter-heavy-contr"></div>
-                                      <span>Heavy Contrast</span>
-                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'lightBlur'">
-                                      <div class="image-filter image-filter-light-blur"></div>
-                                      <span>Light Blur</span>
-                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'heavyBlur'">
-                                      <div class="image-filter image-filter-heavy-blur"></div>
-                                      <span>Heavy Blur</span>
-                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'grayscale'">
-                                      <div class="image-filter image-filter-grayscale"></div>
-                                      <span>Grayscale</span>
-                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'grayscaleBlur'">
-                                      <div class="image-filter image-filter-blur-grayscale"></div>
-                                      <span>Blur Grayscale</span>
-                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'redTint'">
-                                      <div class="image-filter image-filter-red-tint"></div>
-                                      <span>Red Tint</span>
-                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'greenTint'">
-                                      <div class="image-filter image-filter-green-tint"></div>
-                                      <span>Green Tint</span>
-                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-if="$ctrl.canvasService.filter == 'blueTint'">
-                                      <div class="image-filter image-filter-blue-tint"></div>
-                                      <span>Blue Tint</span>
-                                      <span><i class="glyphicon glyphicon-chevron-down"></i></span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                </div>
-                                <div class="filters-select-list">
-                                  <div class="filter-item" ng-click="$ctrl.addFilter('none')">
-                                      <div class="image-filter image-filter-none"></div>
-                                      <span>None</span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-click="$ctrl.addFilter('lightContrast')">
-                                      <div class="image-filter"></div>
-                                      <span>Light Contrast</span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-click="$ctrl.addFilter('heavyContrast')">
-                                      <div class="image-filter image-filter-heavy-contr"></div>
-                                      <span>Heavy Contrast</span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-click="$ctrl.addFilter('lightBlur')">
-                                      <div class="image-filter image-filter-light-blur"></div>
-                                      <span>Light Blur</span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-click="$ctrl.addFilter('heavyBlur')">
-                                      <div class="image-filter image-filter-heavy-blur"></div>
-                                      <span>Heavy Blur</span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-click="$ctrl.addFilter('grayscale')">
-                                      <div class="image-filter image-filter-grayscale"></div>
-                                      <span>Grayscale</span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-click="$ctrl.addFilter('grayscaleBlur')">
-                                      <div class="image-filter image-filter-blur-grayscale"></div>
-                                      <span>Blur Grayscale</span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-click="$ctrl.addFilter('redTint')">
-                                      <div class="image-filter image-filter-red-tint"></div>
-                                      <span>Red Tint</span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-click="$ctrl.addFilter('greenTint')">
-                                      <div class="image-filter image-filter-green-tint"></div>
-                                      <span>Green Tint</span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                  <div class="filter-item" ng-click="$ctrl.addFilter('blueTint')">
-                                      <div class="image-filter image-filter-blue-tint"></div>
-                                      <span>Blue Tint</span>
-                                      <div class="clearfix"></div>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="select-text-block">
-                            <div class="select-text-title">
-                                <span>TEXT</span>
-                            </div>
-                            <div class="select-text-out-block" >
-                                <div class="select-text-inner-block">
-                                    <div class="select-text text-title" ng-click="$ctrl.addText('title')" ng-class="{'select-text-active': $ctrl.canvasService.addText.title === 'title'}"></div>
-                                    <span>Header</span>
-                                </div>
-                                <div class="select-text-inner-block">
-                                    <div class="select-text text-body" ng-click="$ctrl.addText('body')"></div>
-                                    <span>Body</span>
-                                </div>
-                                <div class="select-text-inner-block">
-                                    <div class="select-text text-bottom" ng-click="$ctrl.addText('caption')"></div>
-                                    <span>Caption</span>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="quotes-block">
-                                <span>Add Quotes</span>
-                                <span><i class="glyphicon glyphicon-chevron-right"></i></span>
-                                <span><i class="glyphicon glyphicon-chevron-left"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="download-btn-style">Download</button>
-                </div>
-            </div>
-        </div>
+<div class="left-navbar">
+  <div class="left-navbar-title"><span>Main</span></div>
+  <div class="left-navbar-body">
+    <ul class="navbar-body-list">
+      <li><span>Overview</span></li>
+    </ul>
+  </div>
+</div>
+<div class="page-body">
+  <div class="news-block">
+    <div class="news-block-inner">
+      <div class="news-title-item"><span>Item</span></div>
+      <div class="news-input-block">
+        <form ng-submit="$ctrl.addNew(newItem)">
+        <input class="news-input" type="text" placeholder="Type name here..." ng-model="newItem" required></input>
+        <button class="add-new-btn" type="submit" name="submit">Add new</button>
+        </form>
+      </div>
+      <div class="news-block-body">
+        <ul class="news-list">
+          <li ng-repeat="item in $ctrl.news track by $index"><span class="news-title">{{item.text}}<span>25</span></span> <button class="delete-new-btn" type="button" name="delete" ng-click="$ctrl.deleteNew($index)">Delete</button><div class="clearfix"></div></li>
+      </div>
     </div>
-</section>
+  </div>
+  <div class="comment-block">
+    <div class="comment-title-item"><span>Comments #2</span></div>
+    <div class="comment-list-body">
+      <ul class="comment-list">
+        <li><span class="user-icon"></span><span class="commet-item">A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popularized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s</span><div class="clearfix"></div></li>
+        <li><span class="user-icon"></span><span class="commet-item">A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popularized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s</span><div class="clearfix"></div></li>
+        <li><span class="user-icon"></span><span class="commet-item">A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popularized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980sA variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popularized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980sA variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popularized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s</span><div class="clearfix"></div></li>
+      </ul>
+      <div class="add-commnet-input-block">
+        <form ng-submit="$ctrl.addComment()">
+          <span class="user-icon"></span>
+          <input class="add-commnet-input" name="comment" ng-model="$ctrl.messegeItem" autocomplete="off"></input>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

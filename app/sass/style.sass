@@ -1,408 +1,171 @@
-@import url("http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-select.min.css")
 body
+  font-family: "OpenSans"
+  font-size: 18px
   background-color: #fff
-  font-family: 'OpenSans', sans-serif
-  font-size: 11px
-  color: #98A0A6
-header
-  border-bottom: 1px solid #DEDEDE
-nav
+.left-navbar
+  float: left
+  width: 25%
+  height: 100vh
+  background-color: #2B2F3E
+.left-navbar-title
   width: 100%
-  height: 60px
-  .logo-block
-    width: 100%
-    height: 60px
-    .logo
-      background: url("../img/logo-black.png") no-repeat center
-      height: 60px
-      width: 95px
-      float: right
+  padding: 30px
+.left-navbar-title span
+  font-size: 36px
+  color: #565A69
+  font-family: "OpenSans-Light"
+.left-navbar-body
+  padding: 30px 0
+.navbar-body-list
+  list-style: none
+  padding: 0
+.navbar-body-list li
+  padding: 25px
+  background-color: #FF3654
+  color: #fff
+  font-size: 18px
+.navbar-body-list li:hover
+  cursor: pointer
+  opacity: .7
+
 .page-body
+  width: 75%
+  height: 100vh
+  float: right
+  background-color: #F9F9F9
+.news-block
+  width: calc(50% - 60px)
+  margin: 30px 20px 30px 30px
+  float: left
+  background-color: #fff
+  box-shadow: 0px -1px 44px -13px rgba(0,0,0,0.75)
+  padding: 15px 15px 15px 25px
+  min-height: 450px
+.news-title-item
+  margin-bottom: 25px
+.news-title-item span
+  font-family: "OpenSans-Light"
+  font-size: 36px
+  color: #565A69
+.news-input-block
   width: 100%
-  height: calc(100vh - 61px)
-
-.gallery-block
-  width: calc(100% - 40px)
+.news-input
+  width: 65%
   padding: 10px
-  min-height: 300px
-  border: 1px solid #DEDEDE
-  margin: 20px 20px
-  color: #98A0A6
-  border-radius: 5px
-  .gallery-header
-    padding-bottom: 9px
-    border-bottom: 1px solid #DEDEDE
-    margin-bottom: 5px
-    span
-      display: block
-      float: left
-      &:nth-child(2)
-        float: right
-        &:hover
-          cursor: pointer
-          opacity: .7
-      i
-        margin-right: 5px
-  .gallery-search-input
-    position: relative
-    color: #323b43
-    font-size: 14px
-    .search-input
-      padding: 10px 20px 10px 10px
-      border-radius: 5px
-      width: 100%
-      border: 1px solid #fff
-      &:focus
-        outline: none
-        border: 1px solid #168eea
-    span
-      display: block
-      position: absolute
-      top: 12px
-      right: 5px
-      &:hover
-        cursor: pointer
-        opacity: .7
-  .gallery
-    list-style: none
-    padding: 0
-    max-height: 60vh
-    overflow: auto
-    border-bottom: 1px solid #DEDEDE
-    .gallery-item
-      position: relative
-      width: 90%
-      margin: 10px 5%
-      max-height: 150px
-      border: 2px solid #fff
-      border-radius: 12px
-      &:hover
-        cursor: pointer
-        opacity: .7
-      img
-        border-radius: 10px
-        width: 100%
-        max-height: 150px
-      .focus-icon
-        display: none
-      .focus-icon-active
-        display: block
-        position: absolute
-        height: 15px
-        width: 15px
-        border-radius: 50%
-        background-color: #168eea
-        color: #ffffff
-        top: -5px
-        right: -5px
-        font-size: 8px
-        text-align: center
-        line-height: 1.7em
-    .gallery-item-active
-      border: 2px solid #168eea
-      border-radius: 12px
-      &::before
-        background: url("../img/active-tick.png") no-repeat center transparent
-        background-size: 15px
-        content: ""
-        position: absolute
-        right: -8px
-        top: -8px
-        z-index: 10
-        width: 20px
-        height: 20px
-  .upload-button
-    width: 90%
-    margin: 10px 5%
-    height: 40px
-    font-size: 14px
-    color: #ffffff
-    background-color: #414d57
-    border: 1px solid #414d57
-    border-radius: 5px
-    &:hover
-      opacity: .7
-    &:focus
-      outline: none
-.canvas-block
-  width: 100%
-  border-right: 1px solid #DEDEDE
-  border-left: 1px solid #DEDEDE
-  height: calc(100vh - 61px)
-  min-height: 300px
-  .canvas-inner-block
-    padding: 20px
-    width: 100%
-    min-height: 400px
-    .canvas-header
-      width: 100%
-      span
-        display: block
-        float: left
-        &:nth-child(2)
-          float: right
-          &:hover
-            cursor: pointer
-            opacity: .7
-.right-tools-panel
-  width: calc(100% - 40px)
-  padding: 10px
-  min-height: 80vh
-  margin: 20px 20px
-  color: #98A0A6
-  .tools-panel
-    min-height: 70vh
-    border-bottom: 1px solid #DEDEDE
-    overflow: auto
-    .canvas-size-select
-      width: 95%
-      height: 110px
-      border: 1px solid #DEDEDE
-      padding: 10px
-      border-radius: 5px
-      margin: 0 5% 15px 0
-      .size-select-header
-        margin-bottom: 15px
-      .size-item
-        border: 1px solid #DEDEDE
-        border-radius: 3px
-        height: 45px
-        display: block
-        float: left
-        margin-right: 2px
-        position: relative
-        &:hover
-          cursor: pointer
-          opacity: .7
-      .pinterest-size
-        width: 26px
-        background: url("../img/sizes-pinterest.png") no-repeat center
-        background-size: cover
-      .instagram-size
-        width: 45px
-        background: url("../img/sizes-instagram.png") no-repeat center
-        background-size: cover
-      .facebook-size
-        width: 76px
-        background: url("../img/sizes-facebook-twitter.png") no-repeat center
-        background-size: cover
-      .size-item-active
-        border: 1px solid #168eea
-        &::before
-          background: url("../img/active-tick.png") no-repeat center transparent
-          background-size: 15px
-          content: ""
-          position: absolute
-          right: -8px
-          top: -8px
-          z-index: 10
-          width: 20px
-          height: 20px
-    .filters-tool
-      width: 95%
-      height: 110px
-      border: 1px solid #DEDEDE
-      padding: 10px
-      border-radius: 5px
-      margin: 0 5% 15px 0
-      position: relative
-      .filters-title
-        width: 100%
-        span
-          float: left
-          &:nth-child(2)
-            float: right
-            &:hover
-              opacity: .7
-              cursor: pointer
-          i
-            margin-right: 5px
-      .filters-select
-        margin-top: 10px
-        .filter-item
-          padding: 10px 0
-          line-height: 4em
-          &:hover
-            cursor: pointer
-          .image-filter
-            background: url("../img/filters/filters-example-light-contrast.jpg") no-repeat center
-            background-size: cover
-            width: 45px
-            height: 45px
-            float: left
-            border-radius: 50%
-          span
-            float: left
-            display: block
-            margin-left: 10px
-            color: #59626a
-      .filters-select-list
-        position: absolute
-        z-index: 25
-        background-color: #fff
-        max-height: 200px
-        overflow-y: scroll
-        border: 1px solid #DEDEDE
-        box-shadow: 0px 10px 39px -12px rgba(0,0,0,0.75)
-        min-width: 100%
-        left: 0
-        display: none
-        .filter-item
-          padding: 10px 10px
-          &:hover
-            background-color: rgba(51, 51, 51, .1)
-    .select-text-block
-      width: 95%
-      min-height: 110px
-      border: 1px solid #DEDEDE
-      padding: 10px
-      border-radius: 5px
-      margin: 0 5% 15px 0
-      .select-text-title
-        margin-bottom: 10px
-      .select-text-out-block
-        width: 100%
-        .select-text-inner-block
-          width: 33%
-          float: left
-          padding: 5px
-          text-align: center
-          .select-text
-            height: 45px
-            border: 1px solid #98A0A6
-            margin-bottom: 5px
-            border-radius: 5px
-            background-size: cover
-            position: relative
-            &:hover
-              cursor: pointer
-              opacity: .7
-          .text-title
-            background: url("../img/text-header-icon.png") no-repeat center
-          .text-body
-            background: url("../img/text-body-icon.png") no-repeat center
-          .text-bottom
-            background: url("../img/text-caption-icon.png") no-repeat center
-          .select-text-active
-            border: 1px solid #168eea
-            &::before
-              background: url("../img/active-tick.png") no-repeat center transparent
-              background-size: 15px
-              content: ""
-              position: absolute
-              right: -8px
-              top: -8px
-              z-index: 10
-              width: 20px
-              height: 20px
-      .quotes-block
-        margin-top: 10px
-        span
-          font-size: 14px
-          display: block
-          float: right
-          margin-left: 10px
-          &:first-child
-            float: left
-          &:nth-child(2), &:nth-child(3)
-            &:hover
-              cursor: pointer
-              opacity: .7
-.download-btn-style
-  width: 80%
-  margin: 20px 10%
-  height: 40px
-  background-color: #168eea
-  color: #ffffff
-  border: 0
-  border-radius: 15px
-  font-size: 14px
-  &:hover
-    opacity: .7
-.canvas-image
-  clear: both
-  position: relative
-.canvas-container
-  margin: 10px auto
-.canvas-style
+  border: 1px solid #CCCCCC
   border-radius: 3px
-
-.controll-panel
+  font-size: 16px
+.news-input:focus
+  border-color: #27CCC0
+  outline: none
+.add-new-btn
+  float: right
+  width: 25%
+  background-color: #27CCC0
+  border: none
+  padding: 9px
+  border-radius: 3px
+  color: #fff
+  font-family: "OpenSans-Semibold"
+  font-size: 16px
+.add-new-btn:hover
+  cursor: pointer
+  opacity: .7
+.add-new-btn:focus
+  outline: none
+.news-block-body
+  margin-top: 10px
+  width: 100%
+.news-list
+  list-style: none
+  padding: 0
+.news-list li
+  padding: 20px 0 10px
+  border-top: 1px solid #F2F2F2
+.news-list li:first-child
+  border-top: none
+.news-list li:last-child
+  border-bottom: 1px solid #F2F2F2
+.news-list li .news-title
+  font-size: 16px
+  max-width: 70%
   display: block
-  margin: 0 auto
-  z-index: 1000
-  background-color: #242A30
-  height: 52px
-  line-height: 52px
-  border-radius: 2px
-  position: absolute
-  padding: 0 10px
-  &:after
-    content: ''
-    position: absolute
-    border-style: solid
-    border-width: 10px 10px 0
-    border-color: #242A30 transparent
-    display: block
-    width: 0
-    z-index: 1
-    bottom: -10px
-    left: 47%
-  span
-    color: #A4A4A4
-    font-size: 16px
+  float: left
+  word-break: break-all
+.news-list li .news-title span
+  display: inline-block
+  font-size: 13px
+  padding: 5px 10px
+  border-radius: 15px
+  background-color: #27CCC0
+  margin-left: 10px
+.news-list li .delete-new-btn
+  float: right
+  width: 25%
+  background-color: #fff
+  border: 1px solid #FF3654
+  padding: 10px
+  border-radius: 3px
+  color: #FF3654
+  font-family: "OpenSans-Semibold"
+  font-size: 16px
+  margin-top: -10px
+.news-list li .delete-new-btn:hover
+  cursor: pointer
+  opacity: .7
+.news-list li .delete-new-btn:focus
+  outline: none
+.comment-block
+  width: 40%
+  margin: 30px 0
+  float: right
+  background-color: #fff
+  box-shadow: 0px -1px 44px -13px rgba(0,0,0,0.75)
+  padding: 15px 15px 15px 25px
+  height: 80vh
+  min-height: 450px
+.comment-title-item
+  font-family: "OpenSans-Light"
+  font-size: 36px
+  color: #565A69
+  margin-bottom: 25px
+.comment-list-body .comment-list
+  list-style: none
+  padding: 0
+.comment-list-body .comment-list li
+  padding: 15px 0 20px
+  border-top: 1px solid #f2f2f2
+  font-size: 12px
+.comment-list-body .comment-list li:first-child
+  border-top: none
+.comment-list-body .comment-list li .user-icon
+  display: inline-block
+  width: 50px
+  height: 50px
+  background-color: #FF8A00
+  vertical-align: top
+.comment-list-body .comment-list li:nth-child(2n) .user-icon
+  background-color: #47568C
+.comment-list-body .comment-list li .commet-item
+  display: inline-block
+  width: calc(100% - 70px)
+  margin-left: 20px
+.add-commnet-input-block
+  width: 100%
+  height: 150px
+  .user-icon
     display: inline-block
-  .input-range
+    width: 50px
+    height: 50px
+    background-color: #E6E6E6
+    vertical-align: top
+  .add-commnet-input
+    width: calc(100% - 76px)
+    margin-left: 20px
+    height: 150px
     display: inline-block
-    margin: 0 10px
-    input
-      &:focus
-        outline: none
-  button
-    margin-top: -5px
-    background-color: #2C7BB5
-    color: #fff
-    &:hover
-      opacity: 0.8
-.image-filter-none
-  background-image: url("../img/filters/filters-example-none.jpg") !important
-.image-filter-heavy-contr
-  background-image: url("../img/filters/filters-example-heavy-contrast.jpg") !important
-.image-filter-light-blur
-  background-image: url("../img/filters/filters-example-light-blur.jpg") !important
-.image-filter-heavy-blur
-  background-image: url("../img/filters/filters-example-heavy-blur.jpg") !important
-.image-filter-grayscale
-  background-image: url("../img/filters/filters-example-grayscale.jpg") !important
-.image-filter-blur-grayscale
-  background-image: url("../img/filters/filters-example-blur-grayscale.jpg") !important
-.image-filter-red-tint
-  background-image: url("../img/filters/filters-example-red-tint.jpg") !important
-.image-filter-green-tint
-  background-image: url("../img/filters/filters-example-green-tint.jpg") !important
-.image-filter-blue-tint
-  background-image: url("../img/filters/filters-example-blue-tint.jpg") !important
-.display-block
-  display: block !important
-.font-controll-panel
-  display: none
-  .font-select-block
-    padding: 5px
-    float: left
-  .font-style-btn
-    padding: 5px 10px
-    float: left
-    img
-      width: 10px
-      height: 10px
-    &:nth-child(3)
-      img
-        width: 6px
-    &:nth-child(4)
-      img
-        width: 20px
-    &:nth-child(5)
-      img
-        width: 15px
-    &:hover
-      cursor: pointer
+    float: right
+    resize: none
+  .add-commnet-input:focus
+    outline: none
+    border: 1px solid #47568C

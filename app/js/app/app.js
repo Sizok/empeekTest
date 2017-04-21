@@ -1,12 +1,9 @@
-angular.module('crop', [
+angular.module('empeek', [
   'ui.router',
-  'ui.bootstrap',
-  'getImage.Service',
-  'canvas.Service',
-  'resizeCanvas.Service',
-  'editCanvas.Service',
-  'cropImage.Service',
-  'crop.home'
+  'LocalStorageModule',
+  'empeek.home',
+  'addNew.Service',
+  'getNewsLocalStorage.Service'
   ])
 .config(['$locationProvider', '$urlRouterProvider', '$httpProvider', '$sceDelegateProvider', function ($locationProvider, $urlRouterProvider, $httpProvider, $sceDelegateProvider) {
     $locationProvider.html5Mode({

@@ -3,7 +3,8 @@ angular.module('empeek', [
   'LocalStorageModule',
   'empeek.home',
   'addNew.Service',
-  'getNewsLocalStorage.Service'
+  'getNewsLocalStorage.Service',
+  'scrollGoBottom.Service'
   ])
 .config(['$locationProvider', '$urlRouterProvider', '$httpProvider', '$sceDelegateProvider', function ($locationProvider, $urlRouterProvider, $httpProvider, $sceDelegateProvider) {
     $locationProvider.html5Mode({

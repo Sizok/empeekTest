@@ -1,0 +1,19 @@
+@media screen and (max-width: 1010px) {
+  .add-new-btn {
+    font-size: 14px; } }
+
+@media screen and (max-width: 992px) {
+  .left-navbar {
+    display: none; }
+  .page-body {
+    display: none; }
+  .small-device-message {
+    display: block;
+    width: 100%;
+    height: 100vh; }
+    .small-device-message .message {
+      display: block;
+      margin: 50vh auto;
+      width: 50%;
+      color: #565A69;
+      font-size: 24px; } }

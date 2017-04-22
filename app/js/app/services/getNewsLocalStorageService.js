@@ -5,7 +5,7 @@
         factory.getNews = function(){
           var news = localStorageService.get('news');
           return news;
-        }
+        };
 
 
         return factory;

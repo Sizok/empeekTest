@@ -1,11 +1,13 @@
 body {
-  font-family: "OpenSans";
+  font-family: "OpenSans", sans-serif;
   font-size: 18px;
-  background-color: #fff; }
+  background-color: #fff;
+  position: relative; }
 
 .left-navbar {
-  float: left;
-  width: 25%;
+  position: absolute;
+  left: 0;
+  width: 250px;
   height: 100vh;
   background-color: #2B2F3E; }
 
@@ -16,7 +18,7 @@ body {
 .left-navbar-title span {
   font-size: 36px;
   color: #565A69;
-  font-family: "OpenSans-Light"; }
+  font-family: "OpenSans-Light", sans-serif; }
 
 .left-navbar-body {
   padding: 30px 0; }
@@ -36,16 +38,20 @@ body {
   opacity: .7; }
 
 .page-body {
-  width: 75%;
+  position: absolute;
   height: 100vh;
-  float: right;
+  right: 0;
+  left: 250px;
   background-color: #F9F9F9; }
 
+.news-out-block {
+  position: absolute;
+  width: 50%;
+  padding: 30px 20px 30px 30px; }
+
 .news-block {
-  width: -webkit-calc(50% - 60px);
-  width: calc(50% - 60px);
-  margin: 30px 20px 30px 30px;
-  float: left;
+  width: -webkit-calc(100% - 40px);
+  width: calc(100% - 40px);
   background-color: #fff;
   -webkit-box-shadow: 0px -1px 44px -13px rgba(0, 0, 0, 0.75);
           box-shadow: 0px -1px 44px -13px rgba(0, 0, 0, 0.75);
@@ -56,7 +62,7 @@ body {
   margin-bottom: 25px; }
 
 .news-title-item span {
-  font-family: "OpenSans-Light";
+  font-family: "OpenSans-Light", sans-serif;
   font-size: 36px;
   color: #565A69; }
 
@@ -84,7 +90,7 @@ body {
   -webkit-border-radius: 3px;
           border-radius: 3px;
   color: #fff;
-  font-family: "OpenSans-Semibold";
+  font-family: "OpenSans-Semibold", sans-serif;
   font-size: 16px; }
 
 .add-new-btn:hover {
@@ -103,8 +109,26 @@ body {
   padding: 0; }
 
 .news-list li {
-  padding: 20px 0 10px;
   border-top: 1px solid #F2F2F2; }
+
+.news-list li:hover {
+  cursor: pointer;
+  background-color: #F2F2F2; }
+
+.news-title-out-block {
+  float: left;
+  width: 70%;
+  padding: 20px 0 20px; }
+
+.active-news-item {
+  position: relative; }
+  .active-news-item:before {
+    content: "";
+    height: 100%;
+    border-right: 4px solid #FF3654;
+    position: absolute;
+    top: 0;
+    left: -27px; }
 
 .news-list li:first-child {
   border-top: none; }
@@ -137,9 +161,9 @@ body {
   -webkit-border-radius: 3px;
           border-radius: 3px;
   color: #FF3654;
-  font-family: "OpenSans-Semibold";
+  font-family: "OpenSans-Semibold", sans-serif;
   font-size: 16px;
-  margin-top: -10px; }
+  margin-top: 10px; }
 
 .news-list li .delete-new-btn:hover {
   cursor: pointer;
@@ -148,26 +172,36 @@ body {
 .news-list li .delete-new-btn:focus {
   outline: none; }
 
+.comment-out-block {
+  width: -webkit-calc(50% - 60px);
+  width: calc(50% - 60px);
+  position: absolute;
+  right: 0;
+  padding: 30px 0 30px 30px; }
+
 .comment-block {
-  width: 40%;
-  margin: 30px 0;
-  float: right;
+  width: -webkit-calc(100% - 40px);
+  width: calc(100% - 40px);
   background-color: #fff;
   -webkit-box-shadow: 0px -1px 44px -13px rgba(0, 0, 0, 0.75);
           box-shadow: 0px -1px 44px -13px rgba(0, 0, 0, 0.75);
   padding: 15px 15px 15px 25px;
-  height: 80vh;
-  min-height: 450px; }
+  min-height: 450px;
+  max-height: 550px; }
 
 .comment-title-item {
-  font-family: "OpenSans-Light";
+  font-family: "OpenSans-Light", sans-serif;
   font-size: 36px;
   color: #565A69;
   margin-bottom: 25px; }
 
 .comment-list-body .comment-list {
   list-style: none;
-  padding: 0; }
+  padding: 0;
+  max-height: 350px;
+  margin-bottom: 20px;
+  overflow-y: auto;
+  min-height: 350px; }
 
 .comment-list-body .comment-list li {
   padding: 15px 0 20px;
@@ -187,7 +221,7 @@ body {
 .comment-list-body .comment-list li:nth-child(2n) .user-icon {
   background-color: #47568C; }
 
-.comment-list-body .comment-list li .commet-item {
+.comment-list-body .comment-list li .comment-item {
   display: inline-block;
   width: -webkit-calc(100% - 70px);
   width: calc(100% - 70px);
@@ -195,7 +229,7 @@ body {
 
 .add-commnet-input-block {
   width: 100%;
-  height: 150px; }
+  height: 100px; }
   .add-commnet-input-block .user-icon {
     display: inline-block;
     width: 50px;
@@ -206,10 +240,13 @@ body {
     width: -webkit-calc(100% - 76px);
     width: calc(100% - 76px);
     margin-left: 20px;
-    height: 150px;
+    height: 100px;
     display: inline-block;
     float: right;
     resize: none; }
   .add-commnet-input-block .add-commnet-input:focus {
     outline: none;
     border: 1px solid #47568C; }
+
+.small-device-message {
+  display: none; }

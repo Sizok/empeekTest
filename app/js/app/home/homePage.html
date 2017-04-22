@@ -7,35 +7,38 @@
   </div>
 </div>
 <div class="page-body">
-  <div class="news-block">
-    <div class="news-block-inner">
-      <div class="news-title-item"><span>Item</span></div>
-      <div class="news-input-block">
-        <form ng-submit="$ctrl.addNew(newItem)">
-        <input class="news-input" type="text" placeholder="Type name here..." ng-model="newItem" required></input>
-        <button class="add-new-btn" type="submit" name="submit">Add new</button>
-        </form>
-      </div>
-      <div class="news-block-body">
-        <ul class="news-list">
-          <li ng-repeat="item in $ctrl.news track by $index"><span class="news-title">{{item.text}}<span>25</span></span> <button class="delete-new-btn" type="button" name="delete" ng-click="$ctrl.deleteNew($index)">Delete</button><div class="clearfix"></div></li>
+  <div class="news-out-block">
+    <div class="news-block">
+      <div class="news-block-inner">
+        <div class="news-title-item"><span>Item</span></div>
+        <div class="news-input-block">
+          <form ng-submit="$ctrl.addNew()">
+            <input class="news-input" type="text" placeholder="Type name here..." ng-model="$ctrl.newItem" required></input>
+            <button class="add-new-btn" type="submit" name="submit">Add new</button>
+          </form>
+        </div>
+        <div class="news-block-body">
+          <ul class="news-list">
+            <li ng-repeat="item in $ctrl.news track by $index" ng-class="{'active-news-item': $ctrl.index == $index}"><div class="news-title-out-block" ng-click="$ctrl.setIndex($index)"><span class="news-title">{{item.text}}<span>{{item.comments.length}}</span></span><div class="clearfix"></div></div><button class="delete-new-btn" type="button" name="delete" ng-click="$ctrl.deleteNew($index)">Delete</button><div class="clearfix"></div></li>
+        </div>
       </div>
     </div>
   </div>
-  <div class="comment-block">
-    <div class="comment-title-item"><span>Comments #2</span></div>
-    <div class="comment-list-body">
-      <ul class="comment-list">
-        <li><span class="user-icon"></span><span class="commet-item">A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popularized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s</span><div class="clearfix"></div></li>
-        <li><span class="user-icon"></span><span class="commet-item">A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popularized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s</span><div class="clearfix"></div></li>
-        <li><span class="user-icon"></span><span class="commet-item">A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popularized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980sA variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popularized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980sA variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popularized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s</span><div class="clearfix"></div></li>
-      </ul>
-      <div class="add-commnet-input-block">
-        <form ng-submit="$ctrl.addComment()">
+  <div class="comment-out-block">
+    <div class="comment-block" ng-if="$ctrl.comments">
+      <div class="comment-title-item"><span>Comments #2</span></div>
+      <div class="comment-list-body">
+        <ul class="comment-list" id="test">
+          <li ng-repeat="item in $ctrl.comments track by $index"><span class="user-icon"></span><span class="comment-item">{{item}}</span><div class="clearfix"></div></li>
+        </ul>
+        <div class="add-commnet-input-block">
           <span class="user-icon"></span>
-          <input class="add-commnet-input" name="comment" ng-model="$ctrl.messegeItem" autocomplete="off"></input>
-        </form>
+          <textarea class="add-commnet-input" name="comment" ng-model="$ctrl.messegeItem" autocomplete="off" ng-enter="$ctrl.addComment()"></textarea>
+        </div>
       </div>
     </div>
   </div>
+</div>
+<div class="small-device-message">
+  <span class="message">Please log in prystoroyu with a larger screen resolution.</span>
 </div>
